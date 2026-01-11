@@ -14,19 +14,27 @@ import {
   FaWhatsapp
 } from "react-icons/fa";
 import style from "./banner.module.css";
-
+import banner1 from "../../assets/images/banner1.png";
+import banner5 from "../../assets/images/banner5.png";
+import banner3 from "../../assets/images/banner3.png";
+import img2 from "../../assets/images/img2.jpg";
+import img3 from "../../assets/images/img3.jpg";
+import img4 from "../../assets/images/img4.jpg";
+import img5 from "../../assets/images/img5.jpg";
+import apropos from "../../assets/images/apropos.png";
+import img1 from "../../assets/images/img1.png";
 function Banner() {
   /* ================= SLIDER ================= */
   const images = [
-    "src/assets/images/banner1.png",
-    "src/assets/images/banner5.png",
-    "src/assets/images/banner3.png",
-    "src/assets/images/img2.jpg",
-    "src/assets/images/img3.jpg",
-    "src/assets/images/img4.jpg",
-    "src/assets/images/img5.jpg",
-    "src/assets/images/apropos.png",
-    "src/assets/images/img1.png"
+    banner1,
+    banner5,
+    banner3,
+    img2,
+    img3,
+    img4,
+    img5,
+    apropos,
+    img1
 
   ];
 

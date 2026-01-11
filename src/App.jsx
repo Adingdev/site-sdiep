@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 import Banner from "./components/banner/Banner";
@@ -10,16 +10,16 @@ import WhatsAppButton from "./components/whatssap/WhatsAppButton";
 import Temoignages from "./components/temoignages/Temoignages";
 import Contact from "./components/contact/Contact";
 import Footer from "./components/footer/Footer";
+
 import Plomberie from "./pages/services/Plomberie";
 import Menuiserie from "./pages/services/Menuiserie";
 import Electricite from "./pages/services/Electricite";
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Navbar />
 
-      {/* Ici, Routes pour toutes les pages */}
       <Routes>
         {/* Page d'accueil */}
         <Route
@@ -46,7 +46,7 @@ function App() {
 
       {/* Bouton WhatsApp flottant visible sur toutes les pages */}
       <WhatsAppButton />
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
