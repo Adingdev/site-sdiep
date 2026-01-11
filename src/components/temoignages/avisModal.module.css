@@ -1,0 +1,419 @@
+/* avisModal.module.css */
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.modalOverlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modalContent {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  border-radius: 25px;
+  max-width: 600px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3);
+  transform: scale(0.9) translateY(30px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.modalOverlay.show .modalContent {
+  transform: scale(1) translateY(0);
+}
+
+/* Header */
+.modalHeader {
+  background: linear-gradient(135deg, #f0a500, #ff8c00);
+  color: #fff;
+  padding: 30px;
+  border-radius: 25px 25px 0 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.modalHeader::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent 70%);
+  border-radius: 50%;
+  animation: float 8s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-20px, -20px); }
+}
+
+.modalHeader h2 {
+  margin: 0 0 8px 0;
+  font-size: 2rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.modalHeader p {
+  margin: 0;
+  font-size: 1rem;
+  opacity: 0.95;
+  position: relative;
+  z-index: 1;
+  font-weight: 300;
+}
+
+.closeButton {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 2;
+}
+
+.closeButton:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: rotate(90deg);
+}
+
+/* Body */
+.modalBody {
+  padding: 35px 30px;
+}
+
+/* Évaluation par étoiles */
+.ratingSection {
+  text-align: center;
+  margin-bottom: 30px;
+  padding: 25px;
+  background: linear-gradient(135deg, #f8fafc, #e8f1f5);
+  border-radius: 15px;
+  border: 2px solid #e8f1f5;
+}
+
+.ratingLabel {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #0f314d;
+  margin-bottom: 15px;
+  display: block;
+}
+
+.stars {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  font-size: 2.5rem;
+}
+
+.star {
+  cursor: pointer;
+  color: #d1d5db;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.star:hover,
+.star.filled {
+  color: #f0a500;
+  transform: scale(1.2);
+  filter: drop-shadow(0 4px 8px rgba(240, 165, 0, 0.4));
+}
+
+.ratingText {
+  margin-top: 15px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #f0a500;
+  min-height: 30px;
+}
+
+/* Formulaire */
+.formGroup {
+  margin-bottom: 25px;
+}
+
+.formLabel {
+  display: block;
+  font-weight: 600;
+  color: #0f314d;
+  margin-bottom: 8px;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.required {
+  color: #ef4444;
+}
+
+.formInput,
+.formTextarea,
+.formSelect {
+  width: 100%;
+  padding: 14px 18px;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: #fff;
+  font-family: inherit;
+}
+
+.formInput:focus,
+.formTextarea:focus,
+.formSelect:focus {
+  outline: none;
+  border-color: #f0a500;
+  box-shadow: 0 0 0 4px rgba(240, 165, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.formTextarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.errorText {
+  color: #ef4444;
+  font-size: 0.85rem;
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Info box */
+.infoBox {
+  background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+  border-left: 4px solid #3b82f6;
+  padding: 15px 20px;
+  border-radius: 10px;
+  margin-bottom: 25px;
+  font-size: 0.95rem;
+  color: #1e40af;
+  line-height: 1.6;
+}
+
+.infoBox strong {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 700;
+}
+
+/* Footer */
+.modalFooter {
+  padding: 25px 30px;
+  background: #f8fafc;
+  border-radius: 0 0 25px 25px;
+  display: flex;
+  gap: 15px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.cancelButton,
+.submitButton {
+  flex: 1;
+  padding: 15px 30px;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.cancelButton {
+  background: rgba(255, 255, 255, 0.8);
+  color: #64748b;
+  border: 2px solid #e5e7eb;
+}
+
+.cancelButton:hover {
+  background: #fff;
+  border-color: #cbd5e1;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.submitButton {
+  background: linear-gradient(135deg, #f0a500, #ff8c00);
+  color: #fff;
+  border: none;
+  box-shadow: 0 8px 20px rgba(240, 165, 0, 0.3);
+}
+
+.submitButton:hover {
+  background: linear-gradient(135deg, #ff8c00, #f0a500);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(240, 165, 0, 0.5);
+}
+
+.submitButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Success message */
+.successMessage {
+  text-align: center;
+  padding: 40px 30px;
+}
+
+.successIcon {
+  font-size: 4rem;
+  color: #16a34a;
+  margin-bottom: 20px;
+  animation: successPop 0.5s ease-out;
+}
+
+@keyframes successPop {
+  0% { transform: scale(0); opacity: 0; }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.successMessage h3 {
+  font-size: 1.8rem;
+  color: #0f314d;
+  margin-bottom: 10px;
+  font-weight: 800;
+}
+
+.successMessage p {
+  color: #64748b;
+  font-size: 1.1rem;
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+
+.successButton {
+  padding: 14px 35px;
+  background: linear-gradient(135deg, #16a34a, #15803d);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.successButton:hover {
+  background: linear-gradient(135deg, #15803d, #16a34a);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(22, 163, 74, 0.4);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .modalContent {
+    width: 95%;
+    max-height: 95vh;
+  }
+
+  .modalHeader {
+    padding: 25px 20px;
+  }
+
+  .modalHeader h2 {
+    font-size: 1.6rem;
+  }
+
+  .modalBody {
+    padding: 25px 20px;
+  }
+
+  .stars {
+    font-size: 2rem;
+    gap: 8px;
+  }
+
+  .modalFooter {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .cancelButton,
+  .submitButton {
+    font-size: 1rem;
+    padding: 14px 25px;
+  }
+
+  .ratingText {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .modalHeader h2 {
+    font-size: 1.4rem;
+  }
+
+  .modalHeader p {
+    font-size: 0.9rem;
+  }
+
+  .stars {
+    font-size: 1.8rem;
+  }
+
+  .formInput,
+  .formTextarea,
+  .formSelect {
+    padding: 12px 15px;
+    font-size: 0.95rem;
+  }
+
+  .successMessage h3 {
+    font-size: 1.5rem;
+  }
+
+  .successMessage p {
+    font-size: 1rem;
+  }
+}
