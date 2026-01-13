@@ -1,15 +1,8 @@
 // Services.jsx
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom"; // Ajout de l'import Link
 import style from "./services.module.css";
-import { Link } from "react-router-dom";
-import { 
-  FaFaucet, 
-  FaTools, 
-  FaBolt, 
-  FaCheckCircle, 
-  FaArrowRight,
-  FaPhoneAlt 
-} from "react-icons/fa";
+import { FaCheckCircle, FaArrowRight, FaPhoneAlt } from "react-icons/fa";
 
 function Services() {
   const sectionRef = useRef(null);
@@ -26,7 +19,7 @@ function Services() {
 
   const services = [
     {
-      icon: <FaFaucet className={style.icon} />,
+      image: "https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?w=400&q=80",
       title: "Plomberie",
       description: "Dépannage, installations et réparations rapides pour tous vos problèmes de plomberie.",
       features: [
@@ -39,7 +32,7 @@ function Services() {
       popular: false
     },
     {
-      icon: <FaTools className={style.icon} />,
+      image: "https://images.unsplash.com/photo-1504148455328-c376907d081c?w=400&q=80",
       title: "Menuiserie",
       description: "Conception et installation de portes, fenêtres et mobilier sur mesure de qualité.",
       features: [
@@ -48,11 +41,11 @@ function Services() {
         "Réparations bois",
         "Agencement intérieur"
       ],
-      link: "/services/menuiserie",
+      link: "/services/menuiserie", // Corrigé le / manquant
       popular: true
     },
     {
-      icon: <FaBolt className={style.icon} />,
+      image: "https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=400&q=80",
       title: "Électricité",
       description: "Dépannage électrique, installation et mise aux normes pour votre sécurité.",
       features: [
@@ -62,6 +55,45 @@ function Services() {
         "Tableau électrique"
       ],
       link: "/services/electricite",
+      popular: false
+    },
+    {
+      image: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=400&q=80",
+      title: "Peinture",
+      description: "Travaux de peinture intérieure et extérieure avec finitions impeccables.",
+      features: [
+        "Peinture intérieure",
+        "Peinture extérieure",
+        "Revêtements muraux",
+        "Finitions décoratives"
+      ],
+      link: "/services/peinture",
+      popular: false
+    },
+    {
+      image: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=400&q=80",
+      title: "Carrelage",
+      description: "Pose de carrelage professionnel pour sols et murs, intérieur et extérieur.",
+      features: [
+        "Carrelage sol & mur",
+        "Faïence salle de bain",
+        "Terrasse & extérieur",
+        "Joints et finitions"
+      ],
+      link: "/services/carrelage",
+      popular: false
+    },
+    {
+      image: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=400&q=80",
+      title: "Vitrerie",
+      description: "Dépannage et installation vitrerie : vitres, miroirs et doubles vitrages.",
+      features: [
+        "Remplacement vitres",
+        "Double vitrage",
+        "Miroirs sur mesure",
+        "Dépannage d'urgence"
+      ],
+      link: "/services/vitrerie",
       popular: false
     }
   ];
@@ -84,9 +116,14 @@ function Services() {
               <span className={style.popularBadge}>Populaire</span>
             )}
 
-            {/* Icône */}
-            <div className={style.iconWrapper}>
-              {service.icon}
+            {/* Image */}
+            <div className={style.imageWrapper}>
+              <img 
+                src={service.image} 
+                alt={service.title}
+                className={style.image}
+              />
+              <div className={style.imageOverlay}></div>
             </div>
 
             {/* Titre */}
@@ -105,7 +142,7 @@ function Services() {
               ))}
             </ul>
 
-            {/* Lien */}
+            {/* Lien - REMPLACÉ <a> par <Link> */}
             <div className={style.linkWrapper}>
               <Link to={service.link} className={style.link}>
                 En savoir plus
